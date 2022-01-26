@@ -45,9 +45,6 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 		return userRepo.save(user);
 	}
 	
-	
-	
-
 	@Override
 	public Phone savePhone(Phone phone) {
 		return phoneRepo.save(phone);
@@ -134,11 +131,19 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 			throw new FieldIncorrectException("La password no puede estar vacia");
 		}
 		
+		validateUserNotExists(user.getName());
 		validateEmailFormat(user.getEmail());
 		validateEmailNoExists(user.getEmail());
 		validatePassword(user.getPassword());
 		
-		
+	}
+	
+	
+	public void validateUserNotExists(String userName) throws FieldIncorrectException {
+		User usuario = findUserByUserName(userName);
+		if (usuario != null ) {
+			throw new FieldIncorrectException("Nombre de usuario ya existe");
+		}
 	}
 	
 	
@@ -151,6 +156,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 		}
 		
 	}
+	
 	
 	public void validateEmailNoExists(String email) throws FieldIncorrectException {
 		User usuario = finByEmail(email);
