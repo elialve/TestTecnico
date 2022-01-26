@@ -52,11 +52,12 @@ public class User {
 
 	}
 
-	public User(Set<Phone> phones, String name, String password, String email) {
+	public User(Set<Phone> phones, String name, String password, String email, Boolean isActive) {
 		this.phones = phones;
 		this.name = name;
 		this.password = password;
 		this.email = email;
+		this.isActive = isActive;
 	}
 
 	public Set<Phone> getPhones() {

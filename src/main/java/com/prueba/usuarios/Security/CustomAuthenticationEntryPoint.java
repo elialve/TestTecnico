@@ -1,4 +1,4 @@
-package com.prueba.usuarios.Security;
+package com.prueba.usuarios.security;
 
 import java.io.IOException;
 

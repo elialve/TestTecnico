@@ -1,0 +1,102 @@
+{
+	"info": {
+		"_postman_id": "517d3b73-2d43-47c1-99aa-e83c29f97e36",
+		"name": "TestApi",
+		"description": "La api tiene como acceso principal el endPoint /authenticate, este es el encargado de crear el jwt que es utilizado para el acceso de los otros endpoint.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "localhost:8080/authenticate",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userName\":\"admin\",\r\n    \"password\": \"AD12ad\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/authenticate",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"authenticate"
+					]
+				},
+				"description": "Esta url se utiliza con el fin de crear el token Jwt que sera utilizado para validar el acceso de otros endpoint de la api."
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/registro",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTY0MzI1MjA3OCwiaWF0IjoxNjQzMjE2MDc4fQ.khDARTfFTUPc2K13dvoU0prMr9lOJV9WiXTPHwRg8zI",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Juan Rodriguez\",\r\n    \"email\": \"juan@rodriguez.com\",\r\n    \"password\": \"Hunter12\",\r\n    \"phones\": [{\r\n            \"number\": \"1234567\",\r\n            \"citycode\": \"1\",\r\n            \"countrycode\": \"57\"\r\n        }, {\r\n            \"number\": \"1234567\",\r\n            \"citycode\": \"1\",\r\n            \"countrycode\": \"57\"\r\n        }\r\n    ]\r\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/registro",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"registro"
+					]
+				},
+				"description": "Este endpoint es utilizado para ingresar un nuevo usuario. Este requiere del uso del JWT entregado por el endpoint /authenticate, ingresando la info  como se muestra a continuación:"
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/listar",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTY0MzI3MTk5OSwiaWF0IjoxNjQzMjM1OTk5fQ.lP2DBuoTQBp0nXg5zHu-4XnEGFdIo6_8ndYCLQ8SdEo",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8080/listar",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"listar"
+					]
+				},
+				"description": "Se utiliza para el listado de usuarios."
+			},
+			"response": []
+		}
+	]
+}

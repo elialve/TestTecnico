@@ -28,18 +28,15 @@ public class TestTecnicoApiApplication {
 	@PostConstruct
 	public void initUsers() {
 		Set<Phone> hset =  new HashSet<Phone>();
-		Phone phone = new Phone();
-		
 	
 	  List<User> users = Stream.of(
-			  new User(hset, "elias","123","elias@gmail.com")
+			  new User(hset, "admin","AD12ad","admin@gmail.com",true)
 			  ).collect(Collectors.toList());
 	  repository.saveAll(users);
 			  
 	}
 	
-	
-	
+
 	
 	public static void main(String[] args) {
 		SpringApplication.run(TestTecnicoApiApplication.class, args);
