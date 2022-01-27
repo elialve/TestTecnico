@@ -139,8 +139,29 @@
 			"name": "Buscar Usuario",
 			"request": {
 				"method": "GET",
-				"header": [],
-				"url": null
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTY0MzI4Njk5MCwiaWF0IjoxNjQzMjg2NjkwfQ.WHeEyWY4uLVE5KdzMMJLt3poV9fZZVHXWjdGh4U9-2I",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8080/user/3",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"user",
+						"3"
+					]
+				}
 			},
 			"response": []
 		}
