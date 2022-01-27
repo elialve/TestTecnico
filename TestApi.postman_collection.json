@@ -161,7 +161,8 @@
 						"user",
 						"3"
 					]
-				}
+				},
+				"description": "Busca el usuario con el id pasado por la url /user/{id_usuario}"
 			},
 			"response": []
 		}
