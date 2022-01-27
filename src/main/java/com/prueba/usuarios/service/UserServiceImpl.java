@@ -42,8 +42,10 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 		final String jwt = jwtUtil.generateToken(user.getName());
 		user.setToken(jwt);
 		user.setIsActive(true);
-		user.setLastLogin(user.getCreated());
-		return userRepo.save(user);
+		User usuario = userRepo.save(user);
+		
+		usuario.setLastLogin(usuario.getCreated());
+		return usuario;
 	}
 
 	@Override
@@ -77,13 +79,16 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		User user = userRepo.findByName(username);
+
 		if (user == null) {
-			throw new UsernameNotFoundException("User not found in the database");
+			return null;
 		}
 
 		return new org.springframework.security.core.userdetails.User(user.getName(), user.getPassword(),
 				new ArrayList<>());
 	}
+	
+	
 
 	@Override
 	public void newLogin(String userName, String token) throws Exception {
