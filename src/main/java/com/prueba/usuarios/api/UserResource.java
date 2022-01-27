@@ -1,6 +1,7 @@
 package com.prueba.usuarios.api;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -58,10 +60,6 @@ public class UserResource {
 
 	}
 
-	@GetMapping("/listar")
-	public ResponseEntity<List<User>> getUsers() {
-		return ResponseEntity.ok().body(userService.getUsers());
-	}
 
 	@PostMapping("/registro")
 	public ResponseEntity<?> saveUser(@RequestBody User user) throws Exception {
@@ -82,5 +80,33 @@ public class UserResource {
 		return new ResponseEntity<>(usuario, HttpStatus.CREATED);
 
 	}
+	
+
+	@GetMapping("/listar")
+	public ResponseEntity<List<User>> getUsers(){
+		try {
+			List<User> list = (List<User>) userService.getUsers();
+			if(list.isEmpty() || list.size() == 0) {
+				return new ResponseEntity<List<User>>(HttpStatus.NO_CONTENT);
+			}
+			
+			return new ResponseEntity<List<User>>(list, HttpStatus.OK);
+		} catch (Exception e) {
+			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		
+	}
+	
+	@GetMapping("/user/{id}")
+	public ResponseEntity<User> getSingleUser(@PathVariable Long id){
+		Optional<User> user = userService.findById(id);
+		if(user.isPresent()) {
+			return new ResponseEntity<User>(user.get(), HttpStatus.OK);
+		}
+		
+		return new ResponseEntity<User>( HttpStatus.NOT_FOUND);
+	}
+	
+    
 
 }

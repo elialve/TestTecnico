@@ -72,7 +72,7 @@
 			]
 		},
 		{
-			"name": "localhost:8080/registro",
+			"name": "Registro",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -106,7 +106,7 @@
 			"response": []
 		},
 		{
-			"name": "localhost:8080/listar",
+			"name": "Listar Usuarios",
 			"request": {
 				"method": "GET",
 				"header": [
@@ -132,6 +132,15 @@
 					]
 				},
 				"description": "Se utiliza para el listado de usuarios."
+			},
+			"response": []
+		},
+		{
+			"name": "Buscar Usuario",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": null
 			},
 			"response": []
 		}

@@ -109,6 +109,13 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 		User user = userRepo.findByEmail(email);
 		return user;
 	}
+	
+	@Override
+	public Optional<User> findById(Long id) {
+		Optional<User> user = userRepo.findById(id);
+		
+		return user;
+	}
 
 	public void validateFields(User user) throws FieldIncorrectException {
 		if (user.getName() == null) {
@@ -182,5 +189,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 		}
 
 	}
+
+
 
 }

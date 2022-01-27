@@ -1,6 +1,7 @@
 package com.prueba.usuarios.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.prueba.usuarios.model.Phone;
 import com.prueba.usuarios.model.User;
@@ -23,5 +24,7 @@ public interface UserService {
 	User getUser(Long userId);
 
 	List<User> getUsers();
+	
+	Optional<User> findById(Long id);
 
 }
