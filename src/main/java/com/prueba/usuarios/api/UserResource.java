@@ -1,7 +1,6 @@
 package com.prueba.usuarios.api;
 
 import java.util.List;
-import java.util.TimeZone;
 
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
