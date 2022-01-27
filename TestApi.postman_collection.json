@@ -32,7 +32,38 @@
 				},
 				"description": "Esta url se utiliza con el fin de crear el token Jwt que sera utilizado para validar el acceso de otros endpoint de la api."
 			},
-			"response": []
+			"response": [
+				{
+					"name": "localhost:8080/authenticate",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userName\":\"admin\",\r\n    \"password\": \"AD12ad\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/authenticate",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"authenticate"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
 		},
 		{
 			"name": "localhost:8080/registro",
