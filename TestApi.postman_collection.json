@@ -10,7 +10,13 @@
 			"name": "localhost:8080/authenticate",
 			"request": {
 				"method": "POST",
-				"header": [],
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
 					"raw": "{\r\n    \"userName\":\"admin\",\r\n    \"password\": \"AD12ad\"\r\n}",
