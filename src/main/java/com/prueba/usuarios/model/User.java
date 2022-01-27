@@ -17,6 +17,8 @@ import javax.persistence.Table;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Table(name = "TBL_USER")
 @Entity
 public class User {
@@ -31,17 +33,20 @@ public class User {
 	private String name;
 	private String email;
 	private String password;
+	
 
 	@CreationTimestamp
+	@JsonFormat(pattern = "dd-MM-YYYY HH:mm:ss", timezone = "GMT-3")
 	@Column(name = "created", nullable = false, updatable = false)
 	private Date created;
 
 	@UpdateTimestamp
+	@JsonFormat(pattern = "dd-MM-YYYY HH:mm:ss", timezone = "GMT-3")
 	@Column(name = "modified")
 	private Date modified;
 	
-	@CreationTimestamp
-	@Column(name = "last_login", nullable = false, updatable = false)
+	
+	@JsonFormat(pattern = "dd-MM-YYYY HH:mm:ss", timezone = "GMT-3")
 	private Date lastLogin;
 
 	private String token;

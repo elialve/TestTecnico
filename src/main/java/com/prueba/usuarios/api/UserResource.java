@@ -1,6 +1,7 @@
 package com.prueba.usuarios.api;
 
 import java.util.List;
+import java.util.TimeZone;
 
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,6 +67,7 @@ public class UserResource {
 	@PostMapping("/registro")
 	public ResponseEntity<?> saveUser(@RequestBody User user) throws Exception {
 		User usuario = null;
+
 		try {
 			usuario = userService.saveUser(user);
 		}catch(FieldIncorrectException e) {
